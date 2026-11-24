@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Projects – {% endblock %}
+{% block content %}
+  <h1>Projects</h1>
+  {% for p in projects %}
+  <article class="news">
+    <h2>{{ p.title }}</h2>
+    <div class="date">{{ p.funder }} · {{ p.start }} – {{ p.end }} · {{ p.role }}</div>
+    {% if p.summary %}<p>{{ p.summary }}</p>{% endif %}
+  </article>
+  {% endfor %}
+{% endblock %}

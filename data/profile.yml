@@ -1,0 +1,61 @@
+# Personal data: used by the website footer and by Part A/B of the CVA.
+# Anything starting with "TODO" is shown highlighted in yellow until you replace it.
+#
+# Privacy: the CVA PDF is PUBLIC on your website. DNI and date of birth are deliberately
+# NOT stored here — add them by hand to the copy you submit to a call.
+
+name: "Jorge Alvarez-Solas"
+cva_name: "Alvarez-Solas, J."        # how your name appears in author lists (bolded)
+email: "alvarez.solas@igeo.ucm-csic.es"
+website: "https://jalvarezsolas.github.io"
+cva_filename: "CVA_Alvarez-Solas.pdf"
+
+# ---------- Part A. Datos personales ----------
+sexo: "Hombre"
+orcid: "TODO: 0000-0000-0000-0000"
+researcher_id: "TODO"
+scopus_id: "TODO"
+google_scholar: "TODO: https://scholar.google.com/citations?user=..."
+github: "https://github.com/palma-ice"
+
+# A.1 Situación profesional actual
+current:
+  organismo: "Universidad Complutense de Madrid"
+  departamento: "Departamento de Física de la Tierra y Astrofísica / Instituto de Geociencias (IGEO, CSIC-UCM)"
+  direccion: "Facultad de Ciencias Físicas, Plaza de Ciencias 1, 28040 Madrid, España"
+  telefono: ""
+  categoria: "TODO: categoría profesional (p. ej. Profesor Titular de Universidad)"
+  fecha_inicio: "TODO: dd/mm/aaaa"
+  unesco: "TODO: código(s) UNESCO"
+  palabras_clave: "Glaciología; modelización de mantos de hielo; paleoclima; cambio climático abrupto; puntos de inflexión; interacción hielo-océano"
+
+# A.2 Situación profesional anterior (most recent first; include career breaks with months)
+previous:
+  - periodo: "TODO: aaaa–aaaa"
+    puesto: "TODO: puesto"
+    institucion: "Universidad Complutense de Madrid / IGEO (CSIC-UCM), España"
+  - periodo: "TODO: aaaa–aaaa"
+    puesto: "TODO: puesto"
+    institucion: "Laboratoire des Sciences du Climat et de l'Environnement (LSCE/IPSL, CEA Saclay), Francia"
+
+# A.3 Formación académica
+education:
+  - titulo: "TODO: Doctorado en ..."
+    universidad: "TODO: Universidad / País"
+    anio: "TODO"
+  - titulo: "TODO: Licenciatura en Ciencias Físicas"
+    universidad: "TODO: Universidad / País"
+    anio: "TODO"
+
+# ---------- Part B. Resumen libre del currículum (max. 5000 characters) ----------
+# Separate paragraphs with a blank line. The build script counts the characters for you.
+# AEI asks you to cover: (1) scientific contributions, funding, leadership and collaborations;
+# (2) contributions to society; (3) training of young researchers; (4) other contributions.
+cva_summary: |
+  Mi investigación se centra en la dinámica de los mantos de hielo y su interacción con el océano y la atmósfera en climas glaciales, interglaciales y futuros, mediante modelos numéricos de distinta complejidad. Durante mi etapa en el Laboratoire des Sciences du Climat et de l'Environnement (LSCE, Francia) propuse que el calentamiento oceánico subsuperficial, y no solo las oscilaciones internas del manto Laurentino, desencadenó los eventos Heinrich (Alvarez-Solas et al., 2010, Nature Geoscience). Posteriormente he extendido este marco a la variabilidad milenaria de los mantos de hielo euroasiático, groenlandés y antártico durante el último periodo glacial.
+
+  En la Universidad Complutense de Madrid y el Instituto de Geociencias (CSIC-UCM) he codesarrollado el modelo de manto de hielo Yelmo (Robinson et al., 2020), así como herramientas eficientes como FastIsostasy. Mis líneas actuales abordan los puntos de inflexión, la histéresis y la irreversibilidad de los mantos de hielo de Groenlandia y la Antártida (Gutiérrez-González et al., 2026; Blasco et al., 2024), el papel de la velocidad del calentamiento en el colapso del hielo marino antártico (Swierczek-Jereczek et al., 2026, Nature Geoscience) y el origen de los ciclos glaciales y la transición del Pleistoceno Medio (Pérez-Montero et al., 2025, 2026). Participo en el proyecto internacional de intercomparación de puntos de inflexión TIPMIP. TODO: financiación obtenida (proyectos como IP), liderazgo y colaboraciones internacionales.
+
+  TODO: aportaciones a la sociedad (divulgación, medios, informes, transferencia).
+
+  He contribuido a la formación de jóvenes investigadores mediante la (co)dirección de tesis doctorales en el grupo, cuyos trabajos aparecen como primer autor en las publicaciones citadas. TODO: número de tesis dirigidas y TFM/TFG, evaluación de proyectos, revisión para revistas, actividades editoriales.

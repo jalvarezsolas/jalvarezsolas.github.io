@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}News – {% endblock %}
+{% block content %}
+  <h1>News</h1>
+  {% for n in news %}
+  <article class="news">
+    <div class="date">{{ n.date.strftime('%B %Y') if n.date.strftime is defined else n.date }}</div>
+    <h2>{{ n.title }}</h2>
+    <p>{{ n.body|safe }}{% if n.link %} <a href="{{ n.link }}">Read more</a>.{% endif %}</p>
+  </article>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,163 @@
+/* ------------------------------------------------------------------
+   Personal website — Jorge Alvarez-Solas
+   Plain CSS, no build step. Edit colours in :root.
+   ------------------------------------------------------------------ */
+:root {
+  --bg: #fbfafd;
+  --text: #1e1d27;
+  --muted: #615f72;
+  --accent: #3a4e9a;      /* glacier blue, slightly towards violet */
+  --accent-soft: #eae9f6;
+  --rule: #e2e0eb;
+  --maxw: 820px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15141c;
+    --text: #e4e3ea;
+    --muted: #a09eb2;
+    --accent: #9fb0e8;
+    --accent-soft: #232338;
+    --rule: #2d2c3a;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- header / nav ---------- */
+header.site {
+  border-bottom: 1px solid var(--rule);
+}
+header.site .inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 18px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+header.site .name {
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+}
+nav a { color: var(--muted); }
+nav a.active, nav a:hover { color: var(--accent); text-decoration: none; }
+nav a.cv-link { color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 1px 8px; }
+nav a.cv-link:hover { background: var(--accent-soft); }
+
+/* ---------- main ---------- */
+main {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+h1, h2, h3 {
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.25;
+}
+h1 { font-size: 1.9rem; margin: 0 0 0.6em; }
+h2 { font-size: 1.35rem; margin: 1.8em 0 0.6em; padding-bottom: 0.2em; border-bottom: 1px solid var(--rule); }
+h3 { font-size: 1.05rem; margin: 1.6em 0 0.4em; color: var(--muted); }
+
+.intro {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+.intro img.portrait {
+  width: 190px;
+  height: auto;
+  border-radius: 4px;
+  filter: grayscale(100%);
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .intro { flex-direction: column; }
+  .intro img.portrait { width: 160px; }
+}
+
+.research dt { font-weight: 700; margin-top: 1em; }
+.research dd { margin: 0.2em 0 0 0; }
+
+.cta {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 2em 0;
+}
+
+/* ---------- publications ---------- */
+.summary { color: var(--muted); }
+.years {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 1em 0 1.5em;
+}
+ol.pubs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ol.pubs li {
+  display: grid;
+  grid-template-columns: 3em 1fr;
+  gap: 0 8px;
+  margin-bottom: 0.9em;
+  font-size: 0.95rem;
+}
+ol.pubs .num { color: var(--muted); font-family: "Inter", system-ui, sans-serif; font-size: 0.85rem; padding-top: 2px; }
+ol.pubs .title { font-style: italic; }
+ol.pubs a { word-break: break-word; }
+
+/* ---------- news ---------- */
+article.news { margin-bottom: 2.2em; }
+article.news h2 { border: none; margin-bottom: 0.3em; }
+article.news .date { color: var(--muted); font-family: "Inter", system-ui, sans-serif; font-size: 0.9rem; }
+
+/* ---------- footer ---------- */
+footer.site {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+footer.site .inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+.profiles { display: flex; gap: 14px; flex-wrap: wrap; font-family: "Inter", system-ui, sans-serif; }
+
+/* Remove once all placeholders are filled in */
+.todo { background: #fff3c4; color: #5a4500; padding: 0 4px; border-radius: 3px; }

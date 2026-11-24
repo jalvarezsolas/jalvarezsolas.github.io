@@ -1,0 +1,24 @@
+# News items (newest first is not required: they are sorted by date).
+# (The dates of the three items below are approximate: please adjust them.)
+# body may contain simple HTML such as <a href="...">links</a>.
+- date: 2026-09-15
+  title: "Antarctic marine ice and the rate of warming — Nature Geoscience"
+  body: >
+    Our new study led by Jan Swierczek-Jereczek shows that marine-based regions of the
+    Antarctic ice sheet can be destabilized when warming outpaces the stabilizing response
+    of the solid Earth: not only how much, but how fast the climate warms matters.
+  link: https://doi.org/10.1038/s41561-026-02117-8
+
+- date: 2026-03-01
+  title: "Hysteresis of the Greenland ice sheet — The Cryosphere"
+  body: >
+    Lucía Gutiérrez-González's paper maps the hysteresis of the Greenland ice sheet from the
+    Last Glacial Maximum to the future, using the Yelmo ice-sheet model.
+  link: https://doi.org/10.5194/tc-20-1139-2026
+
+- date: 2026-02-01
+  title: "The Mid-Pleistocene transition with a simple physical model — Climate of the Past"
+  body: >
+    Following up on PACCO, our simple physical model for glacial cycles, Sergio Pérez-Montero
+    explores what could have driven the transition from 41-kyr to 100-kyr glacial cycles.
+  link: https://doi.org/10.5194/cp-22-625-2026

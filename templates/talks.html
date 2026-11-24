@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Talks – {% endblock %}
+{% block content %}
+  <h1>Talks</h1>
+  {% for t in talks %}
+  <p><strong>{{ t.title }}</strong><br>
+    {{ t.type }}, {{ t.congress }}, {{ t.place }}, {{ t.date }}.</p>
+  {% endfor %}
+{% endblock %}

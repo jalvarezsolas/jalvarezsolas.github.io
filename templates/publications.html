@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Publications – {% endblock %}
+{% block content %}
+  <h1>Publications</h1>
+  <p class="summary">
+    {{ pubs|length }} articles and preprints, newest first.
+    An up-to-date abbreviated CV in the Spanish FECYT/AEI format (CVA) can be
+    <a href="{{ cva_file }}">downloaded here</a>.
+  </p>
+  <p class="years">{% for y in years %}<a href="#y{{ y }}">{{ y }}</a> {% endfor %}</p>
+  {% set ns = namespace(n=pubs|length, year=None) %}
+  {% for p in pubs %}
+    {% if p.year != ns.year %}
+      {% if ns.year %}</ol>{% endif %}
+      <h3 id="y{{ p.year }}">{{ p.year }}</h3>
+      <ol class="pubs">
+      {% set ns.year = p.year %}
+    {% endif %}
+    <li><span class="num">[{{ ns.n }}]</span><span>{{ authors(p, me) }} ({{ p.year }}).
+      <span class="title">{{ p.title }}</span>. {{ source(p) }}.
+      <a href="https://doi.org/{{ p.doi }}">doi:{{ p.doi }}</a></span></li>
+    {% set ns.n = ns.n - 1 %}
+  {% endfor %}
+  {% if pubs %}</ol>{% endif %}
+{% endblock %}

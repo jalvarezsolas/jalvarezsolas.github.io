@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Welcome!</h1>
+
+  <div class="intro">
+    <!-- Replace files/portrait.svg with your own photo, e.g. files/portrait.jpg -->
+    <img class="portrait" src="files/portrait.svg" alt="Jorge Alvarez-Solas">
+    <div>
+      <p>
+        I am a climate scientist working on the dynamics of ice sheets and their interaction
+        with the ocean and atmosphere across glacial and interglacial climates. I am based at the
+        Department of Earth Physics and Astrophysics of the
+        <a href="https://www.ucm.es/">Complutense University of Madrid</a> and the
+        <a href="https://igeo.ucm-csic.es/">Geosciences Institute (IGEO, CSIC-UCM)</a>, where I work
+        within the paleoclimate modelling group together with Marisa Montoya.
+        <span class="todo">[confirm position title]</span>
+      </p>
+      <p>
+        Most of my work relies on numerical models of different complexity, from simple
+        conceptual models to the 3D ice-sheet model
+        <a href="https://github.com/palma-ice/yelmo">Yelmo</a>, which I co-developed.
+        My research currently follows three main lines:
+      </p>
+    </div>
+  </div>
+
+  <dl class="research">
+    <dt>Ice-sheet tipping points and hysteresis</dt>
+    <dd>
+      How close are present-day and past ice sheets to critical thresholds, and how reversible
+      is their retreat? We map stability diagrams in temperature–ice-volume space for Greenland,
+      Antarctica and the Northern Hemisphere paleo ice sheets
+      (<a href="https://doi.org/10.5194/tc-20-1139-2026">Gutiérrez-González et al., 2026</a>;
+      <a href="https://doi.org/10.5194/cp-20-1919-2024">Blasco et al., 2024</a>),
+      and study how the rate of warming, and not only its magnitude, can trigger marine ice-sheet
+      collapse (<a href="https://doi.org/10.1038/s41561-026-02117-8">Swierczek-Jereczek et al., 2026</a>).
+    </dd>
+
+    <dt>Abrupt climate change and ice–ocean interactions</dt>
+    <dd>
+      The role of oceanic warming in triggering Heinrich events and in the millennial-scale
+      variability of the glacial ice sheets
+      (<a href="https://doi.org/10.1038/ngeo752">Alvarez-Solas et al., 2010</a>;
+      <a href="https://doi.org/10.5194/cp-15-957-2019">Alvarez-Solas et al., 2019</a>),
+      and the mechanisms behind glacial abrupt climate changes
+      (<a href="https://doi.org/10.1007/s00382-014-2211-8">Banderas et al., 2014</a>).
+    </dd>
+
+    <dt>Glacial cycles and model development</dt>
+    <dd>
+      Understanding the 100-kyr glacial cycles and the Mid-Pleistocene transition with simple
+      physical models (<a href="https://doi.org/10.5194/esd-16-915-2025">Pérez-Montero et al., 2025</a>;
+      <a href="https://doi.org/10.5194/cp-22-625-2026">2026</a>), and developing efficient
+      ice-sheet and solid-Earth models such as
+      <a href="https://doi.org/10.5194/gmd-13-2805-2020">Yelmo</a> and
+      <a href="https://doi.org/10.5194/gmd-17-5263-2024">FastIsostasy</a>.
+    </dd>
+  </dl>
+
+  <p>
+    See my <a href="publications.html">publications</a> and the latest <a href="news.html">news</a>,
+    or download my <a href="{{ cva_file }}">abbreviated CV (CVA, FECYT/AEI format)</a>.
+  </p>
+
+  <p class="cta">
+    <strong>I am always happy to start new collaborations, and to hear from prospective
+    Master's and PhD students. Please get in touch!</strong>
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Department of Earth Physics and Astrophysics<br>
+    Faculty of Physical Sciences, Complutense University of Madrid<br>
+    Plaza de Ciencias 1, 28040 Madrid, Spain<br>
+    <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+  </p>
+{% endblock %}

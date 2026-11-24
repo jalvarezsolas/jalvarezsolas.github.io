@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}{{ profile.name }}</title>
+  <meta name="description" content="{{ profile.name }} — ice-sheet and paleoclimate modelling, Complutense University of Madrid and IGEO (CSIC-UCM).">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="inner">
+    <a class="name" href="index.html">{{ profile.name }}</a>
+    <nav>
+      <ul>
+        <li><a {% if page == 'home' %}class="active" {% endif %}href="index.html">Home</a></li>
+        <li><a {% if page == 'publications' %}class="active" {% endif %}href="publications.html">Publications</a></li>
+        {% if has_projects %}<li><a {% if page == 'projects' %}class="active" {% endif %}href="projects.html">Projects</a></li>{% endif %}
+        {% if has_talks %}<li><a {% if page == 'talks' %}class="active" {% endif %}href="talks.html">Talks</a></li>{% endif %}
+        <li><a {% if page == 'news' %}class="active" {% endif %}href="news.html">News</a></li>
+        <li><a class="cv-link" href="{{ cva_file }}">CV (PDF)</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+<footer class="site">
+  <div class="inner">
+    <div>
+      {{ profile.name }} · Complutense University of Madrid &amp; IGEO (CSIC-UCM)<br>
+      <a href="mailto:{{ profile.email }}">{{ profile.email }}</a> · last updated {{ today.strftime('%d %B %Y') }}
+    </div>
+    <div class="profiles">
+      {% if 'TODO' in profile.orcid %}<span class="todo">ORCID</span>{% else %}<a href="https://orcid.org/{{ profile.orcid }}">ORCID</a>{% endif %}
+      {% if 'TODO' in profile.google_scholar %}<span class="todo">Google Scholar</span>{% else %}<a href="{{ profile.google_scholar }}">Google Scholar</a>{% endif %}
+      <a href="{{ profile.github }}">GitHub</a>
+      <a href="{{ cva_file }}">CVA (PDF)</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

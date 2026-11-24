@@ -1,0 +1,14 @@
+# Research projects -> "Projects" page on the website AND CVA section C.3.
+# The Projects page only appears once this list has at least one entry.
+#
+# - reference: "PID2022-XXXXXX"
+#   title: "Project title"
+#   funder: "Agencia Estatal de Investigación, Proyectos de Generación de Conocimiento 2022"
+#   pi: "Montoya, M. (UCM)"              # investigador/a principal y entidad
+#   start: "01/09/2023"
+#   end: "31/08/2027"
+#   amount: "150.000 €"
+#   role: "Investigador"                 # Investigador principal / Investigador / ...
+#   summary: "One or two sentences for the website (optional)."
+#   cva: true
+[]

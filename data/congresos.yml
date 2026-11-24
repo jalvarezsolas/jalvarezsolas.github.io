@@ -1,0 +1,12 @@
+# Conference contributions -> "Talks" page on the website AND CVA section C.2.
+# The Talks page only appears once this list has at least one entry.
+# Mark up to 10 with "cva: true" for the CVA (otherwise the 10 most recent are used).
+#
+# - date: 2026-04-27
+#   type: "Presentación oral"            # Conferencia invitada / Presentación oral / Póster
+#   authors: ["Alvarez-Solas, J.", "Montoya, M.", "Robinson, A."]
+#   title: "Title of the contribution"
+#   congress: "EGU General Assembly 2026"
+#   place: "Vienna, Austria"
+#   cva: true
+[]
