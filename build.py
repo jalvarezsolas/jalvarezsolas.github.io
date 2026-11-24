@@ -125,6 +125,40 @@ def summary_blocks(text):
     return blocks
 
 
+def prepare_photos(profile):
+    """Make web copies of photos/photo*.jpg in static/files/photos/.
+
+    photos/ stays on your computer only (it is in .gitignore). The copies are rotated
+    upright, cropped to 4:5 around the face, resized and stripped of metadata (GPS etc.).
+    Runs only where photos/ exists, i.e. locally; GitHub uses the committed copies.
+    """
+    src = ROOT / "photos"
+    if not src.is_dir():
+        return
+    from PIL import Image, ImageOps
+    dst = ROOT / "static" / "files" / "photos"
+    dst.mkdir(parents=True, exist_ok=True)
+    focus = profile.get("photo_focus", {})
+    wanted = sorted(src.glob("photo*.jp*g"))
+    for old in dst.glob("*.jpg"):                     # photo deleted in photos/ -> remove copy
+        if not any(old.stem == w.stem for w in wanted):
+            old.unlink()
+    for f in wanted:
+        out = dst / (f.stem + ".jpg")
+        if out.exists() and out.stat().st_mtime >= f.stat().st_mtime \
+                and (ROOT / "data" / "profile.yml").stat().st_mtime <= out.stat().st_mtime:
+            continue
+        im = ImageOps.exif_transpose(Image.open(f)).convert("RGB")
+        fx, fy = focus.get(f.name, (0.5, 0.4))         # face position as fraction of width/height
+        w, h = im.size
+        cw, ch = (w, int(w * 5 / 4)) if w * 5 / 4 <= h else (int(h * 4 / 5), h)
+        left = min(max(int(fx * w - cw / 2), 0), w - cw)
+        top = min(max(int(fy * h - ch / 2), 0), h - ch)
+        im = im.crop((left, top, left + cw, top + ch)).resize((480, 600), Image.LANCZOS)
+        im.save(out, "JPEG", quality=82, optimize=True)   # saved without EXIF metadata
+        print(f"photo: {f.name} -> static/files/photos/{out.name}")
+
+
 def main():
     make_pdf = "--no-pdf" not in sys.argv
     profile = load("profile", {})
@@ -146,6 +180,9 @@ def main():
     news.sort(key=lambda n: str(n["date"]), reverse=True)
     talks.sort(key=lambda t: str(t.get("date", "")), reverse=True)
 
+    prepare_photos(profile)
+    photos = sorted(p.name for p in (ROOT / "static" / "files" / "photos").glob("*.jpg"))
+
     me = profile["cva_name"]
     today = dt.date.today()
     env = Environment(loader=FileSystemLoader(ROOT / "templates"),
@@ -164,7 +201,7 @@ def main():
 
     years = sorted({p["year"] for p in pubs}, reverse=True)
     pages = {
-        "index.html": dict(page="home", pubs=pubs, news=news[:3]),
+        "index.html": dict(page="home", pubs=pubs, news=news[:3], photos=photos),
         "publications.html": dict(page="publications", pubs=pubs, years=years),
         "news.html": dict(page="news", news=news),
     }

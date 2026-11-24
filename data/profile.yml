@@ -74,3 +74,12 @@ cva_summary: |
   - Formación de personal: Dirección de 8 tesis doctorales (5 en curso), 11 Trabajos Fin de Máster, 2 prácticas de empresa. Supervisor de estancias y contratos predoctorales y postdoctorales.
   - Docencia: Más de 5 años de docencia de grado y máster en universidades españolas y extranjeras.
   - Gestión: Co-IP del Grupo de Investigación Complutense PalMA-ice.
+
+# ---------- Profile photos ----------
+# Put photos named photo*.jpg in the photos/ folder (it stays private on your computer);
+# the build makes cropped, metadata-free web copies. If a face is cut off, set where the
+# face is, as fractions of width and height (0.5, 0.4 = centred, slightly above the middle).
+photo_focus:
+  photo7.jpg: [0.72, 0.45]
+  photo8.jpg: [0.5, 0.62]
+  photo9.jpg: [0.5, 0.62]

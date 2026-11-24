@@ -3,7 +3,10 @@
   <h1>Welcome!</h1>
 
   <div class="intro">
-    <img class="portrait" src="files/portrait.jpg" alt="Jorge Alvarez-Solas">
+    <div class="portrait" data-photos='{{ photos|tojson }}'>
+      <img src="files/photos/{{ photos[0] }}" alt="Jorge Alvarez-Solas">
+      <img src="files/photos/{{ photos[0] }}" alt="" aria-hidden="true">
+    </div>
     <div>
       <p>
         I am a climate scientist working on abrupt climate change, ice-sheet dynamics and
@@ -72,4 +75,34 @@
     28040 Madrid, Spain<br>
     <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
   </p>
+<script>
+/* Profile photo: random order, a new photo every 5 seconds with a soft cross-fade. */
+(function () {
+  var box = document.querySelector('.portrait');
+  var photos = JSON.parse(box.dataset.photos || '[]');
+  if (photos.length < 2) return;
+  var imgs = box.querySelectorAll('img'), front = 0, queue = [];
+  function next() {
+    if (!queue.length) {                       // reshuffle once every photo has been shown
+      queue = photos.slice();
+      for (var i = queue.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1)), t = queue[i]; queue[i] = queue[j]; queue[j] = t;
+      }
+    }
+    return 'files/photos/' + queue.pop();
+  }
+  photos.forEach(function (p) { new Image().src = 'files/photos/' + p; });   // preload
+  imgs[0].src = next();
+  setInterval(function () {
+    var back = 1 - front;
+    imgs[back].src = next();
+    imgs[back].classList.add('shown');
+    imgs[front].classList.remove('shown');
+    imgs[0].alt = ''; imgs[1].alt = '';
+    imgs[back].alt = 'Jorge Alvarez-Solas';
+    front = back;
+  }, 5000);
+  imgs[0].classList.add('shown');
+})();
+</script>
 {% endblock %}

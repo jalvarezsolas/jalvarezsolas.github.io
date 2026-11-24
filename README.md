@@ -16,7 +16,8 @@ and both are rebuilt and published automatically.
 | `data/profile.yml` | Contact details, ORCID etc., CVA Part A and Part B (summary) |
 | `templates/index.html` | Text of the Home page |
 | `static/style.css` | Colours and layout |
-| `static/files/` | Images (your photo) |
+| `photos/photo*.jpg` | Rotating profile photos (this folder stays private; run `build.py` locally to refresh the web copies in `static/files/photos/`) |
+| `data/formacion.yml` | CVA C.5 (theses) and C.6 (other training) |
 
 `build.py` turns all of this into the finished site in `_site/` (never edit `_site/`,
 it is regenerated every time). Values starting with `TODO` appear highlighted in yellow
