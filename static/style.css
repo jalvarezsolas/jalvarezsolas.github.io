@@ -3,22 +3,22 @@
    Plain CSS, no build step. Edit colours in :root.
    ------------------------------------------------------------------ */
 :root {
-  --bg: #fbfafd;
-  --text: #1e1d27;
-  --muted: #615f72;
-  --accent: #3a4e9a;      /* glacier blue, slightly towards violet */
-  --accent-soft: #eae9f6;
-  --rule: #e2e0eb;
+  --bg: #fbfafe;
+  --text: #1f1c2b;
+  --muted: #645f78;
+  --accent: #4f44a3;      /* blue-violet */
+  --accent-soft: #ece8f8;
+  --rule: #e3dfee;
   --maxw: 820px;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #15141c;
-    --text: #e4e3ea;
-    --muted: #a09eb2;
-    --accent: #9fb0e8;
-    --accent-soft: #232338;
-    --rule: #2d2c3a;
+    --bg: #16131f;
+    --text: #e6e2f0;
+    --muted: #a49db8;
+    --accent: #b3a9f0;
+    --accent-soft: #262040;
+    --rule: #2f2a40;
   }
 }
 
@@ -36,8 +36,10 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ---------- header / nav ---------- */
+:root { --header-bg: #2b2457; --header-text: #ffffff; --header-link: #cfc8f2; }
+@media (prefers-color-scheme: dark) { :root { --header-bg: #0e0b1a; } }
 header.site {
-  border-bottom: 1px solid var(--rule);
+  background: var(--header-bg);
 }
 header.site .inner {
   max-width: var(--maxw);
@@ -53,8 +55,9 @@ header.site .name {
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 600;
   font-size: 1.15rem;
-  color: var(--text);
+  color: var(--header-text);
 }
+header.site .name:hover { text-decoration: none; }
 nav ul {
   list-style: none;
   margin: 0;
@@ -65,10 +68,11 @@ nav ul {
   font-family: "Inter", system-ui, sans-serif;
   font-size: 0.95rem;
 }
-nav a { color: var(--muted); }
-nav a.active, nav a:hover { color: var(--accent); text-decoration: none; }
-nav a.cv-link { color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 1px 8px; }
-nav a.cv-link:hover { background: var(--accent-soft); }
+nav a { color: var(--header-link); }
+nav a.active, nav a:hover { color: var(--header-text); text-decoration: none; }
+nav a.active { box-shadow: inset 0 -2px 0 var(--header-link); }
+nav a.cv-link { color: var(--header-text); border: 1px solid var(--header-link); border-radius: 4px; padding: 1px 8px; }
+nav a.cv-link:hover { background: rgba(255, 255, 255, 0.12); }
 
 /* ---------- main ---------- */
 main {
