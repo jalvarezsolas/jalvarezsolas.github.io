@@ -1,10 +1,7 @@
 # Technology / knowledge transfer: contracts, reports, patents -> CVA section C.4 only.
-#
-# - title: "Contract or report title"
-#   entity: "Company or institution"
-#   pi: "Name (affiliation)"
-#   start: "dd/mm/aaaa"
-#   end: "dd/mm/aaaa"
-#   amount: ""
-#   details: ""
-[]
+# Fields: title, entity, pi, start, end, amount, details
+- title: "Desarrollo de laboratorios virtuales de meteorología y clima"
+  entity: "MICINN"
+  start: "2015"
+  end: "2021"
+- title: "Desarrollo y validación de modelos numéricos de mantos de hielo y clima, utilizados por grupos internacionales en estudios de estabilidad de la criosfera"

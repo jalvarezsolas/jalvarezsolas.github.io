@@ -2,8 +2,12 @@
 {% block title %}Talks – {% endblock %}
 {% block content %}
   <h1>Talks</h1>
+  <p class="summary">Selected invited talks and conference contributions.</p>
+  {% set ns = namespace(year=None) %}
   {% for t in talks %}
-  <p><strong>{{ t.title }}</strong><br>
-    {{ t.type }}, {{ t.congress }}, {{ t.place }}, {{ t.date }}.</p>
+    {% set y = t.date|string %}{% set y = y[:4] %}
+    {% if y != ns.year %}{% if ns.year %}</ul>{% endif %}<h3>{{ y }}</h3><ul class="talks">{% set ns.year = y %}{% endif %}
+    <li>{% if t.title %}<em>{{ t.title }}</em>. {% endif %}{{ t.congress }}, {{ t.place }}{% if t.type %} <span class="muted">({{ t.type }})</span>{% endif %}</li>
   {% endfor %}
+  {% if talks %}</ul>{% endif %}
 {% endblock %}

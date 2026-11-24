@@ -1,12 +1,57 @@
 # Conference contributions -> "Talks" page on the website AND CVA section C.2.
-# The Talks page only appears once this list has at least one entry.
-# Mark up to 10 with "cva: true" for the CVA (otherwise the 10 most recent are used).
+# Mark items with "cva: true" for the CVA (otherwise the most recent are used).
+# Fields: date (year or yyyy-mm-dd), type (Conferencia invitada / Presentación oral / Póster),
+#         congress, place, and optionally title and authors.
 #
 # - date: 2026-04-27
-#   type: "Presentación oral"            # Conferencia invitada / Presentación oral / Póster
+#   type: "Presentación oral"
 #   authors: ["Alvarez-Solas, J.", "Montoya, M.", "Robinson, A."]
 #   title: "Title of the contribution"
 #   congress: "EGU General Assembly 2026"
 #   place: "Vienna, Austria"
 #   cva: true
-[]
+
+- date: 2025
+  type: "Conferencia invitada"
+  congress: "Bjerknes Centre invited presentations"
+  place: "Bergen, Noruega"
+- date: 2025
+  type: "Conferencia invitada"
+  congress: "Final meeting Critical Earth"
+  place: "El Escorial, España"
+- date: 2025
+  type: "Conferencia invitada"
+  congress: "Cursos de Criosfera de la plataforma POLARCSIC"
+  place: "España"
+- date: 2021
+  type: "Conferencia invitada"
+  congress: "Cursos de verano, plataforma POLARCSIC"
+  place: "Barcelona, España"
+- date: 2018
+  type: "Conferencia invitada"
+  congress: "EPHE, Université de Bordeaux"
+  place: "Burdeos, Francia"
+- date: 2017
+  type: "Conferencia invitada"
+  congress: "Abrupt climate changes meeting, PIK"
+  place: "Potsdam, Alemania"
+- date: 2016
+  type: "Conferencia invitada"
+  congress: "Climate modelling talks, LSCE"
+  place: "Gif-sur-Yvette, Francia"
+- date: 2015
+  type: "Conferencia invitada"
+  congress: "International Union for Quaternary Research (INQUA) Congress"
+  place: "Nagoya, Japón"
+- date: 2015
+  type: "Conferencia invitada"
+  congress: "Southern Ocean Bipolar Seesaw Conference, Bjerknes Centre"
+  place: "Bergen, Noruega"
+- date: 2014
+  type: "Conferencia invitada"
+  congress: "American Geophysical Union (AGU) Fall Meeting"
+  place: "San Francisco, EE. UU."
+- date: 2013
+  type: "Conferencia invitada"
+  congress: "Mathematics and Geosciences: Global and Local Perspectives (MATHGEO)"
+  place: "Madrid, España"

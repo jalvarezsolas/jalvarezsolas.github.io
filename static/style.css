@@ -161,3 +161,8 @@ footer.site .inner {
 
 /* Remove once all placeholders are filled in */
 .todo { background: #fff3c4; color: #5a4500; padding: 0 4px; border-radius: 3px; }
+
+/* ---------- talks ---------- */
+ul.talks { padding-left: 1.2em; margin: 0; }
+ul.talks li { margin-bottom: 0.4em; }
+.muted { color: var(--muted); }

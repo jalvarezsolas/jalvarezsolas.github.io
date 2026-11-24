@@ -1,0 +1,18 @@
+# Training of researchers -> CVA sections C.5 and C.6 (not shown on the website).
+tesis:      # C.5 Supervisión de tesis (defended)
+  - year: 2024
+    title: "Thermomechanical behaviour of the Laurentide Ice Sheet: from analytical advances to a modelling approach"
+    student: "Daniel Moreno Parada"
+    university: "UCM"
+  - year: 2020
+    title: "Assessing the Antarctic sea-level contribution from the Last Glacial Period to the future"
+    student: "Javier Blasco Navarro"
+    university: "UCM"
+  - year: 2019
+    title: "Modelización de los cambios climáticos abruptos glaciales y de su impacto en los mantos de hielo glaciales del hemisferio norte"
+    student: "Rubén Banderas Carreño"
+    university: "UCM"
+otra:       # C.6 Otra formación de personal investigador
+  - "2024: 2 estudiantes de prácticas de empresa, IGEO (CSIC-UCM)."
+  - "2011-2025: Codirección de 11 Trabajos Fin de Máster."
+  - "Tesis doctorales en curso (UCM): Sergio Pérez-Montero, Lucía Gutiérrez-González, Antonio Juárez-Martínez, Jan Swierczek-Jereczek y Santiago Tesouro."

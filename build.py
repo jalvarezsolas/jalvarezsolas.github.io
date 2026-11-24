@@ -67,7 +67,7 @@ def author_list(pub, me, cva=False):
         s = escape(a)
         if a == me:
             s = Markup(f"<strong>{s}</strong>")
-        if cva and a in corr and n > 8:
+        if cva and a in corr:
             s = Markup(f"{s} (AC)")
         return s
 
@@ -82,8 +82,9 @@ def author_list(pub, me, cva=False):
 
     if not cva and n > len(authors):           # truncated list on the website
         return Markup(", ").join(fmt(a) for a in authors) + Markup(", et al.")
-    if cva or len(authors) == 1:
-        return Markup(", ").join(fmt(a) for a in authors)
+    if cva:
+        pos = authors.index(me) + 1 if me in authors else pub.get("position", "?")
+        return Markup(", ").join(fmt(a) for a in authors) + Markup(f" ({pos}/{n})")
     if len(authors) == 1:
         return fmt(authors[0])
     return Markup(", ").join(fmt(a) for a in authors[:-1]) + Markup(" and ") + fmt(authors[-1])
@@ -95,19 +96,33 @@ def source(pub, cva=False):
         s += Markup(", ") + escape(pub["volume"])
         if pub.get("pages"):
             s += Markup(":" if cva else ", ") + escape(pub["pages"])
+    if pub.get("isbn"):
+        s += Markup(f". ISBN {escape(pub['isbn'])}")
     if pub.get("status"):
         s += Markup(f" ({escape(pub['status'])})")
     return s
 
 
-def select_for_cva(items, label):
+def select_for_cva(items, label, limit):
     chosen = [x for x in items if x.get("cva")]
     if not chosen:
-        chosen = items[:CVA_MAX_ITEMS]
-    if len(chosen) > CVA_MAX_ITEMS:
-        warnings.append(f"{label}: {len(chosen)} items marked 'cva: true', only the first {CVA_MAX_ITEMS} are used")
-        chosen = chosen[:CVA_MAX_ITEMS]
+        chosen = items[:limit]
+    if len(chosen) > limit:
+        warnings.append(f"{label}: {len(chosen)} items marked 'cva: true', only the first {limit} are used")
+        chosen = chosen[:limit]
     return chosen
+
+
+def summary_blocks(text):
+    """Split Part B into paragraphs and bullet lists ("- " lines)."""
+    blocks = []
+    for chunk in [c.strip() for c in text.split("\n\n") if c.strip()]:
+        lines = chunk.splitlines()
+        if all(l.startswith("- ") for l in lines):
+            blocks.append(("ul", [l[2:] for l in lines]))
+        else:
+            blocks.append(("p", " ".join(lines)))
+    return blocks
 
 
 def main():
@@ -118,9 +133,12 @@ def main():
     talks = load("congresos", [])
     projects = load("proyectos", [])
     transfer = load("transferencia", [])
+    training = load("formacion", {})
+    limit = profile.get("cva_max_items", CVA_MAX_ITEMS)
 
     for name, obj in [("profile", profile), ("congresos", talks),
-                      ("proyectos", projects), ("transferencia", transfer)]:
+                      ("proyectos", projects), ("transferencia", transfer),
+                      ("formacion", training)]:
         find_todos(obj, name)
 
     # newest first, whatever order they were typed in
@@ -163,11 +181,13 @@ def main():
     if n_chars > CVA_MAX_SUMMARY:
         warnings.append(f"CVA Part B has {n_chars} characters (max. {CVA_MAX_SUMMARY})")
     cva_html = env.get_template("cva.html").render(
-        c1=select_for_cva(pubs, "publications"),
-        c2=select_for_cva(talks, "congresos"),
-        c3=select_for_cva(projects, "proyectos"),
-        c4=select_for_cva(transfer, "transferencia"),
-        summary_paragraphs=[p.strip() for p in summary.split("\n\n") if p.strip()],
+        c1=select_for_cva(pubs, "publications", limit),
+        c2=select_for_cva(talks, "congresos", limit),
+        c3=select_for_cva(projects, "proyectos", limit),
+        c4=select_for_cva(transfer, "transferencia", limit),
+        c5=training.get("tesis", []),
+        c6=training.get("otra", []),
+        summary_blocks=summary_blocks(summary),
         summary_chars=n_chars,
     )
     (OUT / "cva.html").write_text(cva_html, encoding="utf-8")

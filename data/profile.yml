@@ -1,61 +1,76 @@
 # Personal data: used by the website footer and by Part A/B of the CVA.
-# Anything starting with "TODO" is shown highlighted in yellow until you replace it.
+# Anything containing "TODO" is shown highlighted in yellow until you replace it.
 #
-# Privacy: the CVA PDF is PUBLIC on your website. DNI and date of birth are deliberately
-# NOT stored here — add them by hand to the copy you submit to a call.
+# Privacy: the CVA PDF is PUBLIC on your website. DNI, date of birth and phone are deliberately
+# NOT stored here: add them by hand to the copy you submit to a call.
 
 name: "Jorge Alvarez-Solas"
+nombre: "Jorge"
+apellidos: "Álvarez Solas"
 cva_name: "Alvarez-Solas, J."        # how your name appears in author lists (bolded)
 email: "alvarez.solas@igeo.ucm-csic.es"
 website: "https://jalvarezsolas.github.io"
 cva_filename: "CVA_Alvarez-Solas.pdf"
+cva_max_items: 15                    # max. items per Part C section (AEI calls: 10)
 
 # ---------- Part A. Datos personales ----------
 sexo: "Hombre"
-orcid: "TODO: 0000-0000-0000-0000"
-researcher_id: "TODO"
-scopus_id: "TODO"
-google_scholar: "TODO: https://scholar.google.com/citations?user=..."
+orcid: "0000-0002-2969-0442"
+researcher_id: "P-9994-2017"
+google_scholar: "https://scholar.google.com/citations?user=2nhADTMAAAAJ"
 github: "https://github.com/palma-ice"
 
 # A.1 Situación profesional actual
 current:
-  organismo: "Universidad Complutense de Madrid"
-  departamento: "Departamento de Física de la Tierra y Astrofísica / Instituto de Geociencias (IGEO, CSIC-UCM)"
-  direccion: "Facultad de Ciencias Físicas, Plaza de Ciencias 1, 28040 Madrid, España"
-  telefono: ""
-  categoria: "TODO: categoría profesional (p. ej. Profesor Titular de Universidad)"
-  fecha_inicio: "TODO: dd/mm/aaaa"
-  unesco: "TODO: código(s) UNESCO"
-  palabras_clave: "Glaciología; modelización de mantos de hielo; paleoclima; cambio climático abrupto; puntos de inflexión; interacción hielo-océano"
+  puesto: "Científico Titular"
+  fecha_inicio: "21/12/2023"
+  organismo: "Consejo Superior de Investigaciones Científicas (CSIC)"
+  departamento: "Instituto de Geociencias (IGEO, CSIC-UCM)"
+  pais: "España"
+  palabras_clave: "Cambios climáticos abruptos, Criosfera, Tipping points"
 
 # A.2 Situación profesional anterior (most recent first; include career breaks with months)
 previous:
-  - periodo: "TODO: aaaa–aaaa"
-    puesto: "TODO: puesto"
-    institucion: "Universidad Complutense de Madrid / IGEO (CSIC-UCM), España"
-  - periodo: "TODO: aaaa–aaaa"
-    puesto: "TODO: puesto"
-    institucion: "Laboratoire des Sciences du Climat et de l'Environnement (LSCE/IPSL, CEA Saclay), Francia"
+  - periodo: "2021-2023"
+    puesto: "Profesor Contratado Doctor. Universidad Complutense de Madrid, España"
+  - periodo: "2019-2021"
+    puesto: "Profesor Contratado Doctor Interino. Universidad Complutense de Madrid, España"
+  - periodo: "2017-2019"
+    puesto: "Contrato postdoctoral. Universidad Complutense de Madrid, España"
+  - periodo: "2013-2017"
+    puesto: "Juan de la Cierva. Universidad Complutense de Madrid, España"
+  - periodo: "2011-2013"
+    puesto: "Contrato postdoctoral PICATA (CEI Campus Moncloa). Universidad Complutense de Madrid, España"
+  - periodo: "2010-2011"
+    puesto: "Contrato postdoctoral. Commissariat à l'Énergie Atomique (CEA Saclay), Francia"
 
 # A.3 Formación académica
 education:
-  - titulo: "TODO: Doctorado en ..."
-    universidad: "TODO: Universidad / País"
-    anio: "TODO"
-  - titulo: "TODO: Licenciatura en Ciencias Físicas"
-    universidad: "TODO: Universidad / País"
-    anio: "TODO"
+  - titulo: "Doctor en Física de la Tierra"
+    universidad: "Université Pierre et Marie Curie / Francia"
+    anio: "2010"
+  - titulo: "Máster Interacción Clima-Medio ambiente"
+    universidad: "Université de Versailles / Francia"
+    anio: "2007"
 
 # ---------- Part B. Resumen libre del currículum (max. 5000 characters) ----------
-# Separate paragraphs with a blank line. The build script counts the characters for you.
-# AEI asks you to cover: (1) scientific contributions, funding, leadership and collaborations;
-# (2) contributions to society; (3) training of young researchers; (4) other contributions.
+# Separate paragraphs with a blank line. Lines starting with "- " become a bullet list.
+# The build script counts the characters for you.
 cva_summary: |
-  Mi investigación se centra en la dinámica de los mantos de hielo y su interacción con el océano y la atmósfera en climas glaciales, interglaciales y futuros, mediante modelos numéricos de distinta complejidad. Durante mi etapa en el Laboratoire des Sciences du Climat et de l'Environnement (LSCE, Francia) propuse que el calentamiento oceánico subsuperficial, y no solo las oscilaciones internas del manto Laurentino, desencadenó los eventos Heinrich (Alvarez-Solas et al., 2010, Nature Geoscience). Posteriormente he extendido este marco a la variabilidad milenaria de los mantos de hielo euroasiático, groenlandés y antártico durante el último periodo glacial.
+  Mi trayectoria investigadora se centra en el estudio de los cambios climáticos abruptos, la dinámica de los mantos de hielo y los tipping points del sistema climático, combinando modelización numérica, análisis de datos paleoclimáticos y el desarrollo de nuevas aproximaciones para comprender la interacción entre la atmósfera, el océano y la criosfera. Tras formarme en Francia (Université Pierre et Marie Curie y Université de Versailles), desarrollé mi carrera postdoctoral y consolidación en la Universidad Complutense de Madrid, donde obtuve contratos competitivos como PICATA-CEI y Juan de la Cierva, hasta alcanzar mi posición actual como Científico Titular del CSIC en el Instituto de Geociencias (IGEO).
 
-  En la Universidad Complutense de Madrid y el Instituto de Geociencias (CSIC-UCM) he codesarrollado el modelo de manto de hielo Yelmo (Robinson et al., 2020), así como herramientas eficientes como FastIsostasy. Mis líneas actuales abordan los puntos de inflexión, la histéresis y la irreversibilidad de los mantos de hielo de Groenlandia y la Antártida (Gutiérrez-González et al., 2026; Blasco et al., 2024), el papel de la velocidad del calentamiento en el colapso del hielo marino antártico (Swierczek-Jereczek et al., 2026, Nature Geoscience) y el origen de los ciclos glaciales y la transición del Pleistoceno Medio (Pérez-Montero et al., 2025, 2026). Participo en el proyecto internacional de intercomparación de puntos de inflexión TIPMIP. TODO: financiación obtenida (proyectos como IP), liderazgo y colaboraciones internacionales.
+  Mi investigación ha contribuido de forma significativa a esclarecer los mecanismos que gobiernan los eventos de Heinrich, la inestabilidad del manto de hielo antártico y la sensibilidad del sistema climático a perturbaciones oceánicas y atmosféricas. He participado en proyectos internacionales como TiPEs (H2020) y ClimTIP (H2020), centrados en los puntos de no retorno del sistema terrestre. He sido Investigador Principal de los proyectos ICEAGE y CCRYTICAS, orientados a reducir la incertidumbre en la evolución futura de los mantos de hielo y a caracterizar los umbrales críticos del sistema climático y sus potenciales cascadas. Estas contribuciones han permitido avanzar en la comprensión de procesos clave para evaluar riesgos climáticos futuros y mejorar la representación de la criosfera en modelos climáticos. Mi producción científica incluye artículos en revistas de alto impacto en ciencias del clima, con aportaciones que han sido ampliamente utilizadas por la comunidad para interpretar la variabilidad glacial y los mecanismos de retroalimentación entre océano y hielo. Más allá de los resultados publicados, mi trabajo ha impulsado el desarrollo y aplicación de modelos de complejidad intermedia y herramientas numéricas que permiten explorar escenarios paleoclimáticos y evaluar la estabilidad de los mantos de hielo bajo condiciones cambiantes.
 
-  TODO: aportaciones a la sociedad (divulgación, medios, informes, transferencia).
+  He mantenido una intensa actividad de colaboración internacional, especialmente con centros de referencia como el LSCE (Francia), el Bjerknes Centre (Noruega) y grupos europeos especializados en modelización climática. Estas colaboraciones han favorecido la transferencia de conocimiento y la formación de jóvenes investigadores, contribuyendo a la consolidación de una comunidad interdisciplinar en torno al estudio de los tipping points climáticos. En el ámbito docente, he impartido asignaturas de grado, máster y doctorado en física, geofísica y climatología, y he dirigido tesis doctorales y trabajos fin de máster que han dado lugar a publicaciones y contribuciones relevantes. También he participado en proyectos de innovación docente orientados al desarrollo de laboratorios virtuales de meteorología y clima.
 
-  He contribuido a la formación de jóvenes investigadores mediante la (co)dirección de tesis doctorales en el grupo, cuyos trabajos aparecen como primer autor en las publicaciones citadas. TODO: número de tesis dirigidas y TFM/TFG, evaluación de proyectos, revisión para revistas, actividades editoriales.
+  Mi objetivo a medio y largo plazo es consolidar una línea de investigación que integre modelización climática, datos paleoclimáticos y análisis de estabilidad del sistema terrestre, con especial énfasis en la criosfera y su papel en los cambios abruptos. Aspiro a fortalecer la capacidad predictiva de los modelos y contribuir a la evaluación de riesgos climáticos asociados a posibles puntos de no retorno, aportando conocimiento clave para la toma de decisiones en un contexto de cambio global acelerado.
+
+  - Publicaciones: 33 publicaciones internacionales con revisión por pares, 100% en el primer cuartil, destacando artículos de primer autor en Nature Geoscience y PNAS. Coautor en Nature Communications. Tres capítulos de libro.
+  - Citas: ~1200 citas (>30 citas/artículo). Índice h: 17.
+  - Sexenios: 3 (2008-2013, 2014-2019, 2020-2025 -en curso-).
+  - Proyectos: Participación en 4 europeos (ERC, FP7, H2020), 6 nacionales y 5 franceses. Investigador Principal (IP) de 1 proyecto europeo (parte nacional) y 2 nacionales. Work Package Leader H2020.
+  - Difusión de la investigación: >100 presentaciones (>75 de ellas orales, >10 invitadas), incluyendo los principales foros científicos internacionales de Ciencias de la Tierra (European Geosciences Union, EGU; American Geophysical Union, AGU; INQUA; etc.).
+  - Internacionalización: Tesis doctoral desarrollada en Francia (LSCE-CNRS, Université Pierre et Marie Curie) y 1 postdoc en el Commissariat à l'Énergie Atomique (Saclay, Francia). Estancias breves (~1.5 años) en LGGE (Grenoble, Francia), PIK (Potsdam, Alemania), EPHE (Burdeos, Francia), Bjerknes Centre (Bergen, Noruega). Programas internacionales: ISMIP6-7, TIPMIP, CMIP, Impact Working Group (PAGES), Make Our Planet Great Again.
+  - Formación de personal: Dirección de 8 tesis doctorales (5 en curso), 11 Trabajos Fin de Máster, 2 prácticas de empresa. Supervisor de estancias y contratos predoctorales y postdoctorales.
+  - Docencia: Más de 5 años de docencia de grado y máster en universidades españolas y extranjeras.
+  - Gestión: Co-IP del Grupo de Investigación Complutense PalMA-ice.

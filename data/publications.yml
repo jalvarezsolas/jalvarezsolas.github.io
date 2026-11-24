@@ -3,6 +3,7 @@
 #   authors:  list, in signing order, written 'Surname, I.'
 #   year, title, journal, volume, pages, doi
 #   status:   optional, e.g. 'in press', 'preprint', 'submitted'
+#   type:     optional 'chapter' for book chapters (add isbn:)
 #   cva:      true -> listed in CVA section C.1 (max. 10; if none are marked, the 10 newest are used)
 #   corresponding: optional list of corresponding authors (marked 'AC' in the CVA when > 8 authors)
 #   n_authors / last_author: only needed when you do not list every author (very long author lists)
@@ -52,6 +53,15 @@
   last_author: "Yang, S."
   corresponding: ["Winkelmann, R."]
 
+- year: 2025
+  title: "Description and validation of the ice-sheet model Nix v1.0"
+  authors: ["Moreno-Parada, D.", "Robinson, A.", "Montoya, M.", "Alvarez-Solas, J."]
+  journal: "Geoscientific Model Development"
+  volume: "18"
+  pages: "3895–3919"
+  doi: 10.5194/gmd-18-3895-2025
+  cva: true
+
 - year: 2024
   title: "Antarctic tipping points triggered by the mid-Pliocene warm climate"
   authors: ["Blasco, J.", "Tabone, I.", "Moreno-Parada, D.", "Robinson, A.", "Alvarez-Solas, J.", "Pattyn, F.", "Montoya, M."]
@@ -77,6 +87,36 @@
   volume: "17"
   pages: "5263–5290"
   doi: 10.5194/gmd-17-5263-2024
+  cva: true
+
+- year: 2024
+  title: "Antarctic sensitivity to oceanic melting parameterizations"
+  authors: ["Juarez-Martinez, A.", "Blasco, J.", "Robinson, A.", "Montoya, M.", "Alvarez-Solas, J."]
+  journal: "The Cryosphere"
+  volume: "18"
+  pages: "4257–4283"
+  doi: 10.5194/tc-18-4257-2024
+  cva: true
+
+- year: 2024
+  title: "Analytical solutions for the advective–diffusive ice column in the presence of strain heating"
+  authors: ["Moreno-Parada, D.", "Robinson, A.", "Montoya, M.", "Alvarez-Solas, J."]
+  journal: "The Cryosphere"
+  volume: "18"
+  pages: "4215–4232"
+  doi: 10.5194/tc-18-4215-2024
+  cva: true
+
+- year: 2024
+  title: "Evolution of the Antarctic Ice Sheet over the next three centuries from an ISMIP6 model ensemble"
+  authors: ["Seroussi, H.", "Pelle, T.", "Lipscomb, W. H.", "Abe-Ouchi, A.", "Albrecht, T.", "Alvarez-Solas, J."]
+  n_authors: 53
+  last_author: "Zwinger, T."
+  journal: "Earth's Future"
+  volume: "12"
+  pages: "e2024EF004561"
+  doi: 10.1029/2024EF004561
+  cva: true
 
 - year: 2023
   title: "Simulating the Laurentide Ice Sheet of the Last Glacial Maximum"
@@ -85,6 +125,7 @@
   volume: "17"
   pages: "2139–2156"
   doi: 10.5194/tc-17-2139-2023
+  cva: true
 
 - year: 2023
   title: "Time-scale synchronisation of oscillatory responses can lead to non-monotonous R-tipping"
@@ -93,13 +134,7 @@
   volume: "13"
   pages: "2104"
   doi: 10.1038/s41598-023-28771-1
-
-- year: 2023
-  title: "Description and validation of the ice sheet model Nix v1.0"
-  authors: ["Moreno-Parada, D.", "Robinson, A.", "Montoya, M.", "Alvarez-Solas, J."]
-  journal: "EGUsphere"
-  status: preprint
-  doi: 10.5194/egusphere-2023-2690
+  cva: true
 
 - year: 2021
   title: "Exploring the impact of atmospheric forcing and basal drag on the Antarctic Ice Sheet under Last Glacial Maximum conditions"
@@ -117,6 +152,15 @@
   pages: "2805–2823"
   doi: 10.5194/gmd-13-2805-2020
   cva: true
+
+- year: 2020
+  type: chapter
+  title: "Rapid climate variability: description and mechanisms"
+  authors: ["Kageyama, M.", "Roche, D. M.", "Combourieu Nebout, N.", "Alvarez-Solas, J."]
+  journal: "In: Paleoclimatology (Frontiers in Earth Sciences), Springer"
+  pages: "405–421"
+  isbn: "978-3-030-24982-3"
+  doi: 10.1007/978-3-030-24982-3_29
 
 - year: 2019
   title: "Ocean-driven millennial-scale variability of the Eurasian ice sheet during the last glacial period simulated with a hybrid ice-sheet–shelf model"
@@ -181,7 +225,14 @@
   volume: "8"
   pages: "16008"
   doi: 10.1038/ncomms16008
-  cva: true
+
+- year: 2017
+  title: "Consequences of rapid ice sheet melting on the Sahelian population vulnerability"
+  authors: ["Defrance, D.", "Ramstein, G.", "Charbit, S.", "Vrac, M.", "Famien, A. M.", "Sultan, B.", "Swingedouw, D.", "Dumas, C.", "Gemenne, F.", "Alvarez-Solas, J.", "Vanderlinden, J.-P."]
+  journal: "Proceedings of the National Academy of Sciences"
+  volume: "114"
+  pages: "6533–6538"
+  doi: 10.1073/pnas.1619358114
 
 - year: 2016
   title: "Glacial onset predated Late Ordovician climate cooling"
@@ -199,6 +250,14 @@
   pages: "2897–2908"
   doi: 10.1007/s00382-014-2211-8
 
+- year: 2013
+  title: "Iceberg discharges of the last glacial period driven by oceanic circulation changes"
+  authors: ["Alvarez-Solas, J.", "Robinson, A.", "Montoya, M.", "Ritz, C."]
+  journal: "Proceedings of the National Academy of Sciences"
+  volume: "110"
+  pages: "16350–16354"
+  doi: 10.1073/pnas.1306622110
+
 - year: 2012
   title: "Role of CO₂ and Southern Ocean winds in glacial abrupt climate change"
   authors: ["Banderas, R.", "Alvarez-Solas, J.", "Montoya, M."]
@@ -206,6 +265,14 @@
   volume: "8"
   pages: "1011–1021"
   doi: 10.5194/cp-8-1011-2012
+
+- year: 2012
+  title: "Brief communication: Can recent ice discharges following the Larsen-B ice-shelf collapse be used to infer the driving mechanisms of millennial-scale variations of the Laurentide ice sheet?"
+  authors: ["Alvarez-Solas, J.", "Robinson, A.", "Ritz, C."]
+  journal: "The Cryosphere"
+  volume: "6"
+  pages: "687–693"
+  doi: 10.5194/tc-6-687-2012
 
 - year: 2011
   title: "On the triggering mechanism of Heinrich events"
@@ -239,5 +306,3 @@
   volume: "3"
   pages: "122–126"
   doi: 10.1038/ngeo752
-  cva: true
-

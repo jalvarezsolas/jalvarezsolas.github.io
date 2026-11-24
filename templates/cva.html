@@ -10,21 +10,24 @@
     margin: 1.5cm 2.5cm;
     @bottom-right { content: counter(page) " / " counter(pages); font: 9pt Arial, "Liberation Sans", sans-serif; color: #666; }
   }
-  body { font-family: Arial, "Liberation Sans", Helvetica, sans-serif; font-size: 11pt; line-height: 1.25; color: #000; margin: 0; }
+  body { font-family: Arial, "Liberation Sans", Helvetica, sans-serif; font-size: 11pt; line-height: 1.15; color: #000; margin: 0; }
   .head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #4b3f8f; padding-bottom: 3pt; margin-bottom: 8pt; }
   .head .t { font-weight: bold; font-size: 12pt; }
   .head .d { font-size: 11pt; }
-  h2 { font-size: 11pt; margin: 10pt 0 4pt; background: #ecebf5; padding: 2pt 4pt; }
-  h3 { font-size: 11pt; margin: 8pt 0 3pt; }
+  h2 { font-size: 11pt; margin: 7pt 0 3pt; background: #ecebf5; padding: 2pt 4pt; }
+  h3 { font-size: 11pt; margin: 6pt 0 2pt; }
   table { width: 100%; border-collapse: collapse; margin-bottom: 4pt; }
-  td, th { border: 0.6pt solid #888; padding: 2pt 4pt; vertical-align: top; text-align: left; }
+  td, th { border: 0.6pt solid #888; padding: 1pt 4pt; vertical-align: top; text-align: left; }
   th { background: #f3f2f8; font-weight: bold; }
   td.l { width: 32%; font-weight: bold; background: #f7f7fa; }
-  p { margin: 0 0 5pt; text-align: justify; }
+  p { margin: 0 0 4pt; text-align: justify; }
   ol { margin: 0; padding-left: 0; list-style: none; }
-  ol li { margin-bottom: 4pt; text-align: justify; }
+  ol li { margin-bottom: 2.5pt; text-align: justify; }
   .todo { background: #fff3c4; }
   .empty { color: #777; font-style: italic; }
+  .legend { font-size: 9.5pt; color: #444; margin-bottom: 3pt; }
+  ul { margin: 0 0 5pt; padding-left: 14pt; }
+  ul li { margin-bottom: 2pt; text-align: justify; }
   a { color: inherit; text-decoration: none; }
 </style>
 </head>
@@ -37,30 +40,33 @@
 
 <h2>Parte A. DATOS PERSONALES</h2>
 <table>
-  <tr><td class="l">Nombre y apellidos</td><td colspan="3">{{ profile.name }}</td></tr>
-  <tr><td class="l">DNI/NIE/pasaporte</td><td></td><td class="l" style="width:18%">Sexo</td><td>{{ profile.sexo|todo }}</td></tr>
-  <tr><td class="l" rowspan="3">Núm. identificación del investigador</td><td colspan="2">Researcher ID</td><td>{{ profile.researcher_id|todo }}</td></tr>
-  <tr><td colspan="2">Código ORCID</td><td>{{ profile.orcid|todo }}</td></tr>
-  <tr><td colspan="2">Scopus Author ID</td><td>{{ profile.scopus_id|todo }}</td></tr>
+  <tr><td class="l">Nombre</td><td>{{ profile.nombre }}</td></tr>
+  <tr><td class="l">Apellidos</td><td>{{ profile.apellidos }}</td></tr>
+  <tr><td class="l">Sexo (*)</td><td>{{ profile.sexo|todo }}</td></tr>
+  <tr><td class="l">Fecha de nacimiento</td><td></td></tr>
+  <tr><td class="l">DNI, NIE, pasaporte</td><td></td></tr>
+  <tr><td class="l">Dirección email</td><td>{{ profile.email }}</td></tr>
+  <tr><td class="l">URL Web</td><td>{{ profile.website|todo }}</td></tr>
+  <tr><td class="l">ORCID (*)</td><td>{{ profile.orcid|todo }}</td></tr>
 </table>
 
 <h3>A.1. Situación profesional actual</h3>
 {% set c = profile.current %}
 <table>
-  <tr><td class="l">Organismo</td><td colspan="3">{{ c.organismo|todo }}</td></tr>
-  <tr><td class="l">Dpto./Centro</td><td colspan="3">{{ c.departamento|todo }}</td></tr>
-  <tr><td class="l">Dirección</td><td colspan="3">{{ c.direccion|todo }}</td></tr>
-  <tr><td class="l">Teléfono</td><td>{{ c.telefono|todo }}</td><td class="l" style="width:18%">Correo electrónico</td><td>{{ profile.email }}</td></tr>
-  <tr><td class="l">Categoría profesional</td><td>{{ c.categoria|todo }}</td><td class="l">Fecha inicio</td><td>{{ c.fecha_inicio|todo }}</td></tr>
-  <tr><td class="l">Espec. cód. UNESCO</td><td colspan="3">{{ c.unesco|todo }}</td></tr>
-  <tr><td class="l">Palabras clave</td><td colspan="3">{{ c.palabras_clave|todo }}</td></tr>
+  <tr><td class="l">Puesto</td><td>{{ c.puesto|todo }}</td></tr>
+  <tr><td class="l">Fecha inicio</td><td>{{ c.fecha_inicio|todo }}</td></tr>
+  <tr><td class="l">Organismo/ Institución</td><td>{{ c.organismo|todo }}</td></tr>
+  <tr><td class="l">Departamento/ Centro</td><td>{{ c.departamento|todo }}</td></tr>
+  <tr><td class="l">País</td><td>{{ c.pais|todo }}</td></tr>
+  <tr><td class="l">Teléfono</td><td></td></tr>
+  <tr><td class="l">Palabras clave</td><td>{{ c.palabras_clave|todo }}</td></tr>
 </table>
 
 <h3>A.2. Situación profesional anterior (incluye interrupciones en la carrera investigadora, indicar meses totales)</h3>
 <table>
-  <tr><th style="width:18%">Periodo</th><th style="width:35%">Puesto/Categoría profesional</th><th>Institución/País/Motivo interrupción</th></tr>
+  <tr><th style="width:18%">Periodo</th><th>Puesto/ Institución/ País / Motivo interrupción</th></tr>
   {% for x in profile.previous %}
-  <tr><td>{{ x.periodo|todo }}</td><td>{{ x.puesto|todo }}</td><td>{{ x.institucion|todo }}</td></tr>
+  <tr><td>{{ x.periodo|todo }}</td><td>{{ x.puesto|todo }}</td></tr>
   {% endfor %}
 </table>
 
@@ -73,11 +79,15 @@
 </table>
 
 <h2>Parte B. RESUMEN LIBRE DEL CURRÍCULUM</h2>
-{% for para in summary_paragraphs %}<p>{{ para|todo }}</p>{% endfor %}
+{% for kind, block in summary_blocks %}
+  {% if kind == 'ul' %}<ul>{% for it in block %}<li>{{ it|todo }}</li>{% endfor %}</ul>
+  {% else %}<p>{{ block|todo }}</p>{% endif %}
+{% endfor %}
 
-<h2>Parte C. MÉRITOS MÁS RELEVANTES (ordenados por tipología)</h2>
+<h2>Parte C. LISTADO DE APORTACIONES MÁS RELEVANTES</h2>
 
-<h3>C.1. Publicaciones más importantes en libros y revistas con “peer review” y en conferencias</h3>
+<h3>C.1. Publicaciones más importantes en libros y revistas con “peer review” y conferencias</h3>
+<p class="legend">AC: autor de correspondencia; (nº x / nº y): posición / autores totales.</p>
 <ol>
 {% for p in c1 %}
   <li>{{ loop.index }}. {{ authors(p, me, cva=True) }} ({{ p.year }}). {{ p.title }}. <i>{{ source(p, cva=True) }}</i>. https://doi.org/{{ p.doi }}</li>
@@ -87,23 +97,37 @@
 <h3>C.2. Congresos</h3>
 <ol>
 {% for t in c2 %}
-  <li>{{ loop.index }}. {{ t.type }}. {{ t.authors|join(', ') }}. {{ t.title }}. {{ t.congress }}, {{ t.place }}, {{ t.date }}.</li>
+  <li>{{ loop.index }}. {{ t.type }}.{% if t.authors %} {{ t.authors|join(', ') }}.{% endif %}{% if t.title %} {{ t.title }}.{% endif %} {{ t.congress }}, {{ t.place }} ({{ t.date }}).</li>
 {% else %}<li class="empty"><span class="todo">TODO: añadir contribuciones en data/congresos.yml</span></li>{% endfor %}
 </ol>
 
 <h3>C.3. Proyectos o líneas de investigación en los que ha participado</h3>
 <ol>
 {% for p in c3 %}
-  <li>{{ loop.index }}. {{ p.reference }}, {{ p.title }}. {{ p.funder }}. IP: {{ p.pi }}. {{ p.start }}–{{ p.end }}. {{ p.amount }}. {{ p.role }}.</li>
+  <li>{{ loop.index }}. <b>{{ p.acronym }}</b>{% if p.title %}: {{ p.title }}{% endif %}. {{ p.funder }}.{% if p.coordinator %} Coordinación: {{ p.coordinator }}.{% endif %}{% if p.pi %} IP: {{ p.pi }}.{% endif %} {{ p.start }}–{{ p.end }}. {{ p.amount|todo }}. {{ p.role }}.</li>
 {% else %}<li class="empty"><span class="todo">TODO: añadir proyectos en data/proyectos.yml</span></li>{% endfor %}
 </ol>
 
 <h3>C.4. Participación en actividades de transferencia de tecnología/conocimiento y explotación de resultados</h3>
 <ol>
 {% for x in c4 %}
-  <li>{{ loop.index }}. {{ x.title }}. {{ x.entity }}. IP: {{ x.pi }}. {{ x.start }}–{{ x.end }}. {{ x.amount }} {{ x.details }}</li>
+  <li>{{ loop.index }}. {{ x.title }}.{% if x.entity %} {{ x.entity }}.{% endif %}{% if x.pi %} IP: {{ x.pi }}.{% endif %}{% if x.start %} {{ x.start }}–{{ x.end }}.{% endif %}{% if x.amount %} {{ x.amount }}.{% endif %}{% if x.details %} {{ x.details }}{% endif %}</li>
 {% else %}<li class="empty">—</li>{% endfor %}
 </ol>
+
+{% if c5 %}
+<h3>C.5. Supervisión de tesis</h3>
+<ol>
+{% for t in c5 %}<li>{{ loop.index }}. {{ t.year }}: {{ t.title }}. {{ t.student }} ({{ t.university }}).</li>{% endfor %}
+</ol>
+{% endif %}
+
+{% if c6 %}
+<h3>C.6. Otra formación de personal investigador</h3>
+<ol>
+{% for x in c6 %}<li>{{ loop.index }}. {{ x }}</li>{% endfor %}
+</ol>
+{% endif %}
 
 </body>
 </html>
