@@ -43,8 +43,8 @@
   <tr><td class="l">Nombre</td><td>{{ profile.nombre }}</td></tr>
   <tr><td class="l">Apellidos</td><td>{{ profile.apellidos }}</td></tr>
   <tr><td class="l">Sexo (*)</td><td>{{ profile.sexo|todo }}</td></tr>
-  <tr><td class="l">Fecha de nacimiento</td><td></td></tr>
-  <tr><td class="l">DNI, NIE, pasaporte</td><td></td></tr>
+  <tr><td class="l">Fecha de nacimiento</td><td>{{ private.fecha_nacimiento or '' }}</td></tr>
+  <tr><td class="l">DNI, NIE, pasaporte</td><td>{{ private.dni or '' }}</td></tr>
   <tr><td class="l">Dirección email</td><td>{{ profile.email }}</td></tr>
   <tr><td class="l">URL Web</td><td>{{ profile.website|todo }}</td></tr>
   <tr><td class="l">ORCID (*)</td><td>{{ profile.orcid|todo }}</td></tr>
@@ -58,7 +58,7 @@
   <tr><td class="l">Organismo/ Institución</td><td>{{ c.organismo|todo }}</td></tr>
   <tr><td class="l">Departamento/ Centro</td><td>{{ c.departamento|todo }}</td></tr>
   <tr><td class="l">País</td><td>{{ c.pais|todo }}</td></tr>
-  <tr><td class="l">Teléfono</td><td></td></tr>
+  <tr><td class="l">Teléfono</td><td>{{ private.telefono or '' }}</td></tr>
   <tr><td class="l">Palabras clave</td><td>{{ c.palabras_clave|todo }}</td></tr>
 </table>
 
@@ -118,7 +118,7 @@
 {% if c5 %}
 <h3>C.5. Supervisión de tesis</h3>
 <ol>
-{% for t in c5 %}<li>{{ loop.index }}. {{ t.year }}: {{ t.title }}. {{ t.student }} ({{ t.university }}).</li>{% endfor %}
+{% for t in c5 %}<li>{{ loop.index }}. {{ t.year }}:{% if t.title %} {{ t.title }}.{% endif %} {{ t.student }} ({{ t.university }}).</li>{% endfor %}
 </ol>
 {% endif %}
 

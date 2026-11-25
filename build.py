@@ -20,6 +20,7 @@ from markupsafe import Markup, escape
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
 OUT = ROOT / "_site"
+PRIVATE = ROOT / "private"
 CVA_MAX_ITEMS = 10        # AEI: max. 10 contributions per Part C section
 CVA_MAX_SUMMARY = 5000    # AEI: Part B max. 5000 characters incl. spaces
 CVA_MAX_PAGES = 4         # AEI: Parts A+B+C max. 4 pages
@@ -217,7 +218,7 @@ def main():
     n_chars = len(" ".join(summary.split()))
     if n_chars > CVA_MAX_SUMMARY:
         warnings.append(f"CVA Part B has {n_chars} characters (max. {CVA_MAX_SUMMARY})")
-    cva_html = env.get_template("cva.html").render(
+    cva_ctx = dict(
         c1=select_for_cva(pubs, "publications", limit),
         c2=select_for_cva(talks, "congresos", limit),
         c3=select_for_cva(projects, "proyectos", limit),
@@ -227,10 +228,19 @@ def main():
         summary_blocks=summary_blocks(summary),
         summary_chars=n_chars,
     )
+    cva_html = env.get_template("cva.html").render(private={}, **cva_ctx)
     (OUT / "cva.html").write_text(cva_html, encoding="utf-8")
 
     if make_pdf:
         from weasyprint import HTML
+        # Private full copy (DNI, birth date, phone) from data/private.yml, which is in
+        # .gitignore: built only on your computer, into private/, never published.
+        private = load("private", {}) or {}
+        if any(private.values()):
+            full = env.get_template("cva.html").render(private=private, **cva_ctx)
+            PRIVATE.mkdir(exist_ok=True)
+            HTML(string=full, base_url=str(OUT)).write_pdf(PRIVATE / env.globals["cva_file"].replace(".pdf", "_completo.pdf"))
+            print(f"Private full CVA written to {PRIVATE}/ (not published)")
         doc = HTML(string=cva_html, base_url=str(OUT)).render()
         npages = len(doc.pages)
         doc.write_pdf(OUT / env.globals["cva_file"])
