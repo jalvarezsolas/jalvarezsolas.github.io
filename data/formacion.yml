@@ -1,6 +1,7 @@
 # Training of researchers -> CVA sections C.5 and C.6 (not shown on the website).
 tesis:      # C.5 Supervisión de tesis (defended). "title" is optional.
   - year: 2026
+    title: "Stability of the Antarctic ice sheet"
     student: "Jan Swierczek-Jereczek"
     university: "UCM"
   - year: 2024
