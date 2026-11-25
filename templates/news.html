@@ -1,12 +1,6 @@
-{% extends "base.html" %}
-{% block title %}News – {% endblock %}
-{% block content %}
-  <h1>News</h1>
-  {% for n in news %}
-  <article class="news">
-    <div class="date">{{ n.date.strftime('%B %Y') if n.date.strftime is defined else n.date }}</div>
-    <h2>{{ n.title }}</h2>
-    <p>{{ n.body|safe }}{% if n.link %} <a href="{{ n.link }}">Read more</a>.{% endif %}</p>
-  </article>
-  {% endfor %}
-{% endblock %}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Moved to the blog</title>
+<meta http-equiv="refresh" content="0; url=blog.html">
+<link rel="canonical" href="blog.html">
+</head><body><p>The news page has moved to the <a href="blog.html">blog</a>.</p></body></html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Blog – {% endblock %}
+{% block content %}
+  <h1>Blog</h1>
+  <p class="summary">News, new papers and other notes. Click a post to read it and leave a comment.</p>
+  {% for p in posts %}
+  <article class="news">
+    <div class="date">{{ p.date.strftime('%d %B %Y') }}</div>
+    <h2><a href="{{ p.url }}">{{ p.title }}</a></h2>
+    <p>{{ p.excerpt }} <a href="{{ p.url }}">Read more →</a></p>
+  </article>
+  {% endfor %}
+{% endblock %}

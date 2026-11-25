@@ -12,12 +12,13 @@ and both are rebuilt and published automatically.
 | `data/congresos.yml` | Talks page **and** CVA C.2 |
 | `data/proyectos.yml` | Projects page **and** CVA C.3 |
 | `data/transferencia.yml` | CVA C.4 |
-| `data/news.yml` | News page |
+| `blog/*.md` | Blog posts, one file per post (see `blog/_HOW-TO-WRITE-A-POST.txt`); comments via giscus |
 | `data/profile.yml` | Contact details, ORCID etc., CVA Part A and Part B (summary) |
 | `templates/index.html` | Text of the Home page |
 | `static/style.css` | Colours and layout |
 | `photos/photo*.jpg` | Rotating profile photos (this folder stays private; run `build.py` locally to refresh the web copies in `static/files/photos/`) |
-| `data/formacion.yml` | CVA C.5 (theses) and C.6 (other training) |
+| `data/formacion.yml` | Theses page **and** CVA C.5 (defended theses) and C.6 (ongoing theses, other training) |
+| `data/private.yml` | Private only (never uploaded): DNI, birth date, phone for `private/CVA_…_completo.pdf` |
 
 `build.py` turns all of this into the finished site in `_site/` (never edit `_site/`,
 it is regenerated every time). Values starting with `TODO` appear highlighted in yellow

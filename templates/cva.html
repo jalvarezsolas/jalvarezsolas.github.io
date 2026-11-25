@@ -122,10 +122,11 @@
 </ol>
 {% endif %}
 
-{% if c6 %}
+{% set c6_items = c6 + (["Tesis doctorales en curso (UCM): " ~ (en_curso[:-1]|join(", ")) ~ (" y " if en_curso|length > 1 else "") ~ en_curso[-1] ~ "."] if en_curso else []) %}
+{% if c6_items %}
 <h3>C.6. Otra formación de personal investigador</h3>
 <ol>
-{% for x in c6 %}<li>{{ loop.index }}. {{ x }}</li>{% endfor %}
+{% for x in c6_items %}<li>{{ loop.index }}. {{ x }}</li>{% endfor %}
 </ol>
 {% endif %}
 

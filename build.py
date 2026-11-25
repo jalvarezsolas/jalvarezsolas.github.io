@@ -13,6 +13,7 @@ import shutil
 import sys
 from pathlib import Path
 
+import markdown
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from markupsafe import Markup, escape
@@ -160,11 +161,34 @@ def prepare_photos(profile):
         print(f"photo: {f.name} -> static/files/photos/{out.name}")
 
 
+def load_posts():
+    """Blog posts: one Markdown file per post in blog/, named YYYY-MM-DD-some-title.md,
+    starting with a small header between --- lines (title, optional image and link)."""
+    posts = []
+    for f in sorted((ROOT / "blog").glob("*.md")):
+        if f.name.startswith("_"):
+            continue
+        text = f.read_text(encoding="utf-8")
+        meta, body = {}, text
+        if text.startswith("---"):
+            _, head, body = text.split("---", 2)
+            meta = yaml.safe_load(head) or {}
+        m = re.match(r"(\d{4}-\d{2}-\d{2})-(.+)", f.stem)
+        date = dt.date.fromisoformat(str(meta.get("date") or m.group(1)))
+        html = markdown.markdown(body, extensions=["extra", "sane_lists"])
+        first_p = re.search(r"<p>(.*?)</p>", html, re.S)
+        excerpt = re.sub(r"<[^>]+>", "", first_p.group(1)) if first_p else ""
+        posts.append(dict(meta, date=date, slug=f.stem, html=Markup(html),
+                          excerpt=excerpt, url=f"blog/{f.stem}.html"))
+    posts.sort(key=lambda p: p["date"], reverse=True)
+    return posts
+
+
 def main():
     make_pdf = "--no-pdf" not in sys.argv
     profile = load("profile", {})
     pubs = load("publications", [])
-    news = load("news", [])
+    posts = load_posts()
     talks = load("congresos", [])
     projects = load("proyectos", [])
     transfer = load("transferencia", [])
@@ -178,7 +202,6 @@ def main():
 
     # newest first, whatever order they were typed in
     pubs.sort(key=lambda p: p["year"], reverse=True)
-    news.sort(key=lambda n: str(n["date"]), reverse=True)
     talks.sort(key=lambda t: str(t.get("date", "")), reverse=True)
 
     prepare_photos(profile)
@@ -194,6 +217,8 @@ def main():
         authors=author_list, source=source,
         cva_file=profile.get("cva_filename", "CVA.pdf"),
         has_talks=bool(talks), has_projects=bool(projects),
+        has_theses=bool(training.get("tesis") or training.get("en_curso")), root="",
+        giscus=profile.get("giscus"),
     )
 
     if OUT.exists():
@@ -202,16 +227,34 @@ def main():
 
     years = sorted({p["year"] for p in pubs}, reverse=True)
     pages = {
-        "index.html": dict(page="home", pubs=pubs, news=news[:3], photos=photos),
+        "index.html": dict(page="home", pubs=pubs, posts=posts[:3], photos=photos),
         "publications.html": dict(page="publications", pubs=pubs, years=years),
-        "news.html": dict(page="news", news=news),
+        "blog.html": dict(page="blog", posts=posts),
+        "news.html": dict(page="blog"),                 # old address, redirects to blog.html
     }
     if talks:
         pages["talks.html"] = dict(page="talks", talks=talks)
+    if training.get("tesis") or training.get("en_curso"):
+        pages["theses.html"] = dict(page="theses", theses=training.get("tesis", []),
+                                    ongoing=training.get("en_curso", []))
     if projects:
         pages["projects.html"] = dict(page="projects", projects=projects)
     for name, ctx in pages.items():
         (OUT / name).write_text(env.get_template(name).render(**ctx), encoding="utf-8")
+
+    # blog posts in _site/blog/, plus any images placed next to them in blog/
+    (OUT / "blog").mkdir(exist_ok=True)
+    for f in (ROOT / "blog").iterdir():
+        if f.name.startswith("_"):
+            continue
+        if f.is_file() and f.suffix != ".md":
+            shutil.copy(f, OUT / "blog" / f.name)
+        elif f.is_dir():
+            shutil.copytree(f, OUT / "blog" / f.name, dirs_exist_ok=True)
+    post_tpl = env.get_template("post.html")
+    for post in posts:
+        (OUT / post["url"]).write_text(post_tpl.render(page="blog", post=post, root="../"),
+                                       encoding="utf-8")
 
     # ------------------------------------------------------------ CVA
     summary = profile.get("cva_summary", "")
@@ -225,6 +268,7 @@ def main():
         c4=select_for_cva(transfer, "transferencia", limit),
         c5=training.get("tesis", []),
         c6=training.get("otra", []),
+        en_curso=training.get("en_curso", []),
         summary_blocks=summary_blocks(summary),
         summary_chars=n_chars,
     )
@@ -249,7 +293,7 @@ def main():
             warnings.append(f"CVA is {npages} pages long (AEI max. {CVA_MAX_PAGES}); "
                             "mark fewer items with 'cva: true' or shorten Part B")
 
-    print(f"Website written to {OUT}/ ({len(pages)} pages)")
+    print(f"Website written to {OUT}/ ({len(pages)} pages, {len(posts)} blog posts)")
     for w in warnings:
         print("  warning:", w)
 

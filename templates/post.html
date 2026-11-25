@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} – {% endblock %}
+{% block content %}
+  <p class="back"><a href="{{ root }}blog.html">← All posts</a></p>
+  <article class="post">
+    <div class="date">{{ post.date.strftime('%d %B %Y') }}</div>
+    <h1>{{ post.title }}</h1>
+    {% if post.image %}<img class="post-image" src="{{ post.image }}" alt="">{% endif %}
+    {{ post.html }}
+    {% if post.link %}<p><a href="{{ post.link }}">Read the paper →</a></p>{% endif %}
+  </article>
+
+  {% if giscus %}
+  <section class="comments">
+    <h2>Comments</h2>
+    <p class="summary">Comments use <a href="https://giscus.app">giscus</a>: sign in with a free GitHub account to comment.</p>
+    <script src="https://giscus.app/client.js"
+      data-repo="{{ giscus.repo }}"
+      data-repo-id="{{ giscus.repo_id }}"
+      data-category="{{ giscus.category }}"
+      data-category-id="{{ giscus.category_id }}"
+      data-mapping="pathname"
+      data-strict="1"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      data-loading="lazy"
+      crossorigin="anonymous"
+      async></script>
+  </section>
+  {% endif %}
+{% endblock %}

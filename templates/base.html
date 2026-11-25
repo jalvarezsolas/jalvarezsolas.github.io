@@ -7,21 +7,22 @@
   <meta name="description" content="{{ profile.name }} — ice-sheet and paleoclimate modelling, Geosciences Institute (IGEO, CSIC-UCM), Madrid.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ root }}style.css">
 </head>
 <body>
 
 <header class="site">
   <div class="inner">
-    <a class="name" href="index.html">{{ profile.name }}</a>
+    <a class="name" href="{{ root }}index.html">{{ profile.name }}</a>
     <nav>
       <ul>
-        <li><a {% if page == 'home' %}class="active" {% endif %}href="index.html">Home</a></li>
-        <li><a {% if page == 'publications' %}class="active" {% endif %}href="publications.html">Publications</a></li>
-        {% if has_projects %}<li><a {% if page == 'projects' %}class="active" {% endif %}href="projects.html">Projects</a></li>{% endif %}
-        {% if has_talks %}<li><a {% if page == 'talks' %}class="active" {% endif %}href="talks.html">Talks</a></li>{% endif %}
-        <li><a {% if page == 'news' %}class="active" {% endif %}href="news.html">News</a></li>
-        <li><a class="cv-link" href="{{ cva_file }}">CV (PDF)</a></li>
+        <li><a {% if page == 'home' %}class="active" {% endif %}href="{{ root }}index.html">Home</a></li>
+        <li><a {% if page == 'publications' %}class="active" {% endif %}href="{{ root }}publications.html">Publications</a></li>
+        {% if has_projects %}<li><a {% if page == 'projects' %}class="active" {% endif %}href="{{ root }}projects.html">Projects</a></li>{% endif %}
+        {% if has_talks %}<li><a {% if page == 'talks' %}class="active" {% endif %}href="{{ root }}talks.html">Talks</a></li>{% endif %}
+        {% if has_theses %}<li><a {% if page == 'theses' %}class="active" {% endif %}href="{{ root }}theses.html">Theses</a></li>{% endif %}
+        <li><a {% if page == 'blog' %}class="active" {% endif %}href="{{ root }}blog.html">Blog</a></li>
+        <li><a class="cv-link" href="{{ root }}{{ cva_file }}">CV (PDF)</a></li>
       </ul>
     </nav>
   </div>
@@ -41,7 +42,7 @@
       {% if 'TODO' in profile.orcid %}<span class="todo">ORCID</span>{% else %}<a href="https://orcid.org/{{ profile.orcid }}">ORCID</a>{% endif %}
       {% if 'TODO' in profile.google_scholar %}<span class="todo">Google Scholar</span>{% else %}<a href="{{ profile.google_scholar }}">Google Scholar</a>{% endif %}
       <a href="{{ profile.github }}">GitHub</a>
-      <a href="{{ cva_file }}">CVA (PDF)</a>
+      <a href="{{ root }}{{ cva_file }}">CVA (PDF)</a>
     </div>
   </div>
 </footer>

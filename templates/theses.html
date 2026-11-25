@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Theses – {% endblock %}
+{% block content %}
+  <h1>Supervised PhD theses</h1>
+  <p class="summary">Doctoral theses I have supervised at the Complutense University of Madrid.
+    The full texts are available in the university repository (Docta).</p>
+
+  {% for t in theses %}
+  <article class="thesis">
+    <div class="date">{{ t.year }} · {{ t.student }} · {{ t.university }}</div>
+    <h2>{{ t.title_en or t.title }}</h2>
+    <p class="supervisors">Supervisors: {{ t.supervisors }}</p>
+    {% if t.summary %}<p>{{ t.summary }}</p>{% endif %}
+    {% if t.docta %}<p><a class="button" href="{{ t.docta }}">Read the thesis (PDF in Docta)</a></p>{% endif %}
+  </article>
+  {% endfor %}
+
+  {% if ongoing %}
+  <h2>Ongoing</h2>
+  <ul class="talks">{% for n in ongoing %}<li>{{ n }}</li>{% endfor %}</ul>
+  {% endif %}
+{% endblock %}

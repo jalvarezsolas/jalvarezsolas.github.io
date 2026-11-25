@@ -1,22 +1,76 @@
-# Training of researchers -> CVA sections C.5 and C.6 (not shown on the website).
-tesis:      # C.5 Supervisión de tesis (defended). "title" is optional.
+# Training of researchers -> "Theses" page on the website AND CVA sections C.5 and C.6.
+#
+# tesis:     defended PhD theses (CVA C.5 + Theses page). Fields:
+#   year, title (as in the CVA), title_en (optional, English title for the website),
+#   student, university, supervisors, docta (link to the UCM repository), summary (website)
+# en_curso:  PhD theses in progress (CVA C.6 + Theses page)
+# otra:      other training lines (CVA C.6 only)
+
+tesis:
   - year: 2026
     title: "Stability of the Antarctic ice sheet"
     student: "Jan Swierczek-Jereczek"
     university: "UCM"
+    supervisors: "Marisa Montoya and Jorge Alvarez-Solas"
+    docta: "https://hdl.handle.net/20.500.14352/137868"
+    summary: >
+      The marine-based regions of Antarctica can retreat abruptly and irreversibly through the
+      marine ice-sheet instability, while glacial isostatic adjustment (GIA) acts as a stabilizing
+      feedback that ice-sheet models usually represent poorly. Jan developed FastIsostasy, a regional
+      GIA model that accounts for the laterally variable solid Earth at a computational cost several
+      orders of magnitude lower than 3D models, and coupled it to Yelmo. With it he mapped the
+      bifurcations of the Antarctic ice sheet under warming and showed that the East Antarctic
+      subglacial basins are prone to rate-induced tipping, at temperatures below their
+      equilibrium tipping points.
+
   - year: 2024
     title: "Thermomechanical behaviour of the Laurentide Ice Sheet: from analytical advances to a modelling approach"
     student: "Daniel Moreno Parada"
     university: "UCM"
+    supervisors: "Alexander Robinson and Jorge Alvarez-Solas"
+    docta: "https://hdl.handle.net/20.500.14352/118400"
+    summary: >
+      The Laurentide Ice Sheet was the largest Northern Hemisphere ice sheet at the Last Glacial
+      Maximum, yet its elevation, volume and dynamics remain uncertain, as does the mechanism
+      behind the Heinrich events it produced. Daniel combined new analytical solutions for the
+      thermal structure of an ice column with numerical simulations, including the development of
+      the ice-sheet model Nix, to show how thermomechanical coupling controls ice streaming and the
+      configuration of the Laurentide Ice Sheet.
+
   - year: 2020
     title: "Assessing the Antarctic sea-level contribution from the Last Glacial Period to the future"
     student: "Javier Blasco Navarro"
     university: "UCM"
+    supervisors: "Alexander Robinson and Jorge Alvarez-Solas"
+    docta: "https://hdl.handle.net/20.500.14352/5402"
+    summary: >
+      The Antarctic ice sheet is the largest potential contributor to future sea-level rise and also
+      its largest source of uncertainty, largely because basal friction and sub-shelf melting are
+      poorly constrained. Javier used paleo simulations of the last glacial period, including its
+      millennial-scale variability and the Last Glacial Maximum, to constrain these processes and
+      assess the Antarctic contribution to sea level from the past to the future.
+
   - year: 2019
     title: "Modelización de los cambios climáticos abruptos glaciales y de su impacto en los mantos de hielo glaciales del hemisferio norte"
+    title_en: "Modelling glacial abrupt climate changes and their impact on the Northern Hemisphere glacial ice sheets"
     student: "Rubén Banderas Carreño"
     university: "UCM"
-otra:       # C.6 Otra formación de personal investigador
+    supervisors: "Marisa Montoya and Jorge Alvarez-Solas"
+    docta: "https://hdl.handle.net/20.500.14352/17038"
+    summary: >
+      Dansgaard-Oeschger events, the abrupt climate changes of the last glacial period, are usually
+      attributed to freshwater-driven reorganizations of the Atlantic overturning circulation, but the
+      origin and size of these freshwater fluxes are uncertain. Rubén explored alternative triggers,
+      such as changes in atmospheric CO₂ and Southern Ocean winds, proposed an interhemispheric
+      mechanism for glacial abrupt climate change, and developed a new method to simulate the
+      evolution of the Northern Hemisphere ice sheets.
+
+en_curso:
+  - "Sergio Pérez-Montero"
+  - "Lucía Gutiérrez-González"
+  - "Antonio Juárez-Martínez"
+  - "Santiago Tesouro"
+
+otra:
   - "2024: 2 estudiantes de prácticas de empresa, IGEO (CSIC-UCM)."
   - "2011-2025: Codirección de 11 Trabajos Fin de Máster."
-  - "Tesis doctorales en curso (UCM): Sergio Pérez-Montero, Lucía Gutiérrez-González, Antonio Juárez-Martínez y Santiago Tesouro."

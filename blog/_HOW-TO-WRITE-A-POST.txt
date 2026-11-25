@@ -1,0 +1,22 @@
+HOW TO WRITE A BLOG POST  (this file is not published: files starting with "_" are skipped)
+
+1. Create a new file in this folder named  YYYY-MM-DD-short-title.md
+   e.g.  2026-12-03-new-paper-on-ecco.md   (the date in the name is the post date)
+
+2. Start it with this header, then write the text below it:
+
+   ---
+   title: "Title of the post"
+   image: images/my-figure.jpg            (optional: put the image in blog/images/)
+   link: https://doi.org/10.xxxx/xxxxx    (optional: adds a "Read the paper" link)
+   ---
+   First paragraph: it is also shown as the preview on the Blog page.
+
+   Another paragraph. **Bold**, *italics*, [a link](https://example.org),
+   and lists:
+   - item one
+   - item two
+
+3. Upload it (git add / commit / push, or upload the file on github.com into the blog/
+   folder). The post appears on the website about two minutes later, with its own
+   comment section.

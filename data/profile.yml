@@ -83,3 +83,10 @@ photo_focus:
   photo7.jpg: [0.72, 0.45]
   photo8.jpg: [0.5, 0.62]
   photo9.jpg: [0.5, 0.62]
+
+# ---------- Blog comments (giscus, stored as GitHub Discussions in this repository) ----------
+giscus:
+  repo: "jalvarezsolas/jalvarezsolas.github.io"
+  repo_id: "R_kgDOV6Dp0Q"
+  category: "Announcements"
+  category_id: "DIC_kwDOV6Dp0c4DL9jl"
